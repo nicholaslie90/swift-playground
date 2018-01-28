@@ -72,11 +72,11 @@ for score in individualScores { //Parentheses around the conditionals are option
         teamScore += 1
     }
 }
-print(teamScore)
+print("For-in loops: \(teamScore)")
 
 //Declaring optional variables
 var optionalString:String? = "Hello"
-print(optionalString = nil)
+print("Optional string: \(optionalString = nil)")
 
 var optionalName:String? = "John Appleseed"
 var greeting = "Hello!"
@@ -88,16 +88,17 @@ let nickName:String? = nil
 let fullName:String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 
+//Switch-cases
 let vegetable = "red pepper"
 switch (vegetable){
 case "celery":
-    print("Add some raisins and make ants on a log.")
+    print("Switch-case: Add some raisins and make ants on a log.")
 case "cucumber", "watercress":
-    print("That would make a good tea sandwich.")
+    print("Switch-case: That would make a good tea sandwich.")
 case let x where x.hasSuffix("pepper"):
-    print ("Is it a spicy \(x)?")
+    print ("Switch-case: Is it a spicy \(x)?")
 default:
-    print("Everything tastes good in soup.")
+    print("Switch-case: Everything tastes good in soup.")
 }
 
 let interestingNumbers = [
@@ -113,40 +114,40 @@ for (kind, numbers) in interestingNumbers {
         }
     }
 }
-print(largest)
+print("For-in loops (interestingNumbers): \(largest)")
 
 //While loops
 var n = 2
 while n < 100 {
     n *= 2
 }
-print(n)
+print("While loops: \(n)")
 
 //Repeat-while loops
 var m = 2
 repeat {
     m *= 2
 } while m < 100
-print (m)
+print ("Repeat-while loops: \(m)")
 
 //For-in with range
 var total = 0
 for i in 0..<4 {
     total += i
 }
-print(total)
+print("For-in with range: \(total)")
 
 //Declaring functions
 func greet(person:String, day:String)->String{
     return "Hello \(person), today is \(day)."
 }
-print(greet(person: "Bob", day: "Tuesday"))
+print("Declaring functions:", greet(person: "Bob", day: "Tuesday"))
 
 //No-argument functions
 func greet(_ person:String, on day:String)->String {
     return "Hello \(person), today is \(day)."
 }
-print(greet("John", on: "Wednesday"))
+print("No-argument functions:", greet("John", on: "Wednesday"))
 
 //Tuple for compound value
 func calculateStatistics(scores: [Int])-> (min: Int, max: Int, sum: Int){
@@ -166,7 +167,28 @@ func calculateStatistics(scores: [Int])-> (min: Int, max: Int, sum: Int){
     return (min, max, sum)
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
-print(statistics.sum)
-print(statistics.1)
+print("Tuple for compound value:", statistics.sum)
+print("Tuple for compound value:", statistics.1)
+
+//Nested functions
+func returnFifteen()->Int{
+    var y = 10
+    func add(){
+        y+=5
+    }
+    add()
+    return y
+}
+print("Nested functions:", returnFifteen())
+
+//Function taking another function as argument
+func makeIncrementer() -> ((Int)->Int) {
+    func addOne(number:Int)->Int{
+        return 1 + number
+    }
+    return addOne
+}
+var increment = makeIncrementer()
+print("Function taking another function as argument:", increment(7))
 
 
